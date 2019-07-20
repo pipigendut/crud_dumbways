@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Form Biodata</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" integrity="sha256-bLNUHzSMEvxBhoysBE7EXYlIrmo7+n7F4oJra1IgOaM=" crossorigin="anonymous" />
+    <style>
+      ul {list-style: none; padding-left: 0;}
+      li input {margin: 4px;}
+      li label span {border-radius: 30px; padding-left: 10px; padding-right: 10px;}
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid" style="width: 500px; padding: 50px; background:#f7f7f7">
+      <form>
+        <div class="form-group">
+          <label for="inputNama">Nama Lengkap</label>
+          <input type="text" class="form-control" id="inputNama" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="inputTempatLahir">Tempat Lahir</label>
+          <select id="inputTempatLahir" class="form-control form-control-sm">
+            <option selected="selected"></option>
+            <option>Jakarta</option>
+            <option>Bekasi</option>
+            <option>Tangerang</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputTanggalLahir">Tanggal Lahir</label>
+          <input id="inputTanggalLahir" class="datepicker form-control form-control-sm" placeholder="mmmm dd, yyyy">
+        </div>
+        <div class="form-group">
+          <label for="inputPhone">No. HP</label>
+          <input type="tel" id="inputPhone" name="phone" class="form-control form-control-sm">
+        </div>
+        <div class="form-group">
+          <label for="inputAlamat">Alamat</label>
+          <textarea class="form-control" id="inputAlamat" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inputPendidikanTerakhir">Pendidikan Terakhir</label>
+          <select id="inputPendidikanTerakhir" class="form-control form-control-sm">
+            <option selected="selected"></option>
+            <option>SMP</option>
+            <option>SMA</option>
+            <option>S1</option>
+            <option>S2</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Agama</label>
+          <div class="radio">
+            <ul>
+              <li><label><input type="radio" name="agama"><span class="label-name">Islam</span></label></li>
+              <li><label><input type="radio" name="agama"><span class="label-name">Kristen</span></label></li>
+              <li><label><input type="radio" name="agama"><span class="label-name">Katolik</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Hobi</label>
+          <div class="checkbox">
+            <ul>
+              <li><label><input type="checkbox" value="renang"><span class="label-name">Renang</span></label></li>
+              <li><label><input type="checkbox" value="game"><span class="label-name">Game</span></label></li>
+              <li><label><input type="checkbox" value="futsal"><span class="label-name">Futsal</span></label></li>
+              <li><label><input type="checkbox" value="programming"><span class="label-name">Programming</span></label></li>
+              <li><label><input type="checkbox" value="kalah"><span class="label-name">Kalah</span></label></li>
+            </ul>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <label>Edit label</label>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js" integrity="sha256-JIBDRWRB0n67sjMusTy4xZ9L09V8BINF0nd/UUUOi48=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('.datepicker').datepicker({
+          format: 'M dd, yyyy',
+          startDate: '-3d'
+      });
+
+      $("#inputPhone").on("keypress keyup blur",function (event) {
+         $(this).val($(this).val().replace(/[^\d].+/, ""));
+          if ((event.which < 48 || event.which > 57)) {
+              event.preventDefault();
+          }
+      });
+
+      var colors = ['#ffbf00', '#bfff00', '#ffb3b3', '#acd1ff', '#acd1a0'];
+      labelNames = document.getElementsByClassName("label-name");
+      Array.prototype.forEach.call(labelNames, (element) => {
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          element.style.backgroundColor = color;
+      });
+    </script>
+  </body>
+</html>
